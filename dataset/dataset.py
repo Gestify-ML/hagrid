@@ -165,7 +165,7 @@ class DetectionDataset(HagridDataset):
 
         image = self._load_image(image_pth)
 
-        if self.one_class:
+        if self.one_class or row["united_bbox"] is None:
             labels = np.array([self.labels[label] for label in row["labels"]])
             iter_boxes = [row["bboxes"][i] for i in range(len(row["bboxes"]))]
         else:

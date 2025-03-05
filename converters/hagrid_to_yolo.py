@@ -75,6 +75,9 @@ def create_hardlink(row, current_dir, dataset_folder, phase):
     phase:
      currently processed subsample
     """
+    if os.path.exists(os.path.join(current_dir, phase, row["target"], row["name"])):
+        return
+
     if not os.path.exists(os.path.join(current_dir, phase, row["target"])):
         os.mkdir(os.path.join(current_dir, phase, row["target"]))
     os.link(

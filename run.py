@@ -4,6 +4,9 @@ from typing import Optional, Tuple
 from omegaconf import OmegaConf
 from torch.distributed import destroy_process_group
 
+import torch
+torch.multiprocessing.set_sharing_strategy('file_system')
+
 try:
     from torchmetrics.detection import MeanAveragePrecision
 except ImportError:
